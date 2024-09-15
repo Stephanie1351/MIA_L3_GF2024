@@ -147,7 +147,7 @@ Suivez ces étapes pour installer et configurer l'application web de gestion fin
 
 - **Administrateur** :
   - Accès: anniella3355@gmail.com / default
-  - Gestion des utilisateurs, gestion des opérations, Gestion des forules.
+  - Gestion des utilisateurs, gestion des opérations, Gestion des formules.
 - **Gestionnaire** :
   - Accès: rajaonarisoajeannique@gmail.com / default
   - Saisi des états financiers, analyse des résultats
