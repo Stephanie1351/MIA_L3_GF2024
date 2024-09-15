@@ -22,8 +22,8 @@
                         <td>{{ $formule->libelle }}</td>
                         <td>{{ $formule->operationsAsString() }}</td>
                         <td>
-                            <button type="button" wire:click='editFormula({{ $formule->id }})' class="btn btn-info text-white"><i class="fa fa-edit"></i></button>
-                            <button type="button" wire:click='removeFormula({{ $formule->id }})' class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
+                            <button type="button" wire:click='editFormule({{ $formule->id }})' class="btn btn-info text-white"><i class="fa fa-edit"></i></button>
+                            <button type="button" wire:click='removeFormule({{ $formule->id }})' class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                 @endforeach
@@ -48,11 +48,11 @@
                         <tr>
                             <td>
                                 <select wire:model.live="results.{{ $key }}.type" class="form-control">
-                                    <option value="formulas">Formule</option>
+                                    <option value="formules">Formule</option>
                                 </select>
                             </td>
                             <td>
-                                @if ($result['type'] === 'formulas')
+                                @if ($result['type'] === 'formules')
                                     <select wire:model='results.{{ $key }}.field_id' class="form-control">
                                         <option value="0">Selectionner</option>
                                         @foreach ($formules as $formule)
@@ -86,9 +86,9 @@
     </div>
 
     <div class="shadow shadow-md rounded bg-white p-4 mb-4">
-        <h6>Nouveau formule</h6>
+        <h6>AJouter / Editer un formule</h6>
         <hr>
-        <form wire:submit.prevent='saveFormula' method="post">
+        <form wire:submit.prevent='saveFormule' method="post">
             <div class="form-group mb-3">
                 <label class="form-label">Libellé de la formule</label>
                 <input type="text" class="form-control" wire:model.live='label'>

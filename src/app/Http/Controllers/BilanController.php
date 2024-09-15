@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Models\Formula;
+use App\Models\Formule;
 use Illuminate\View\View;
 use App\Models\Bilan\Actif;
 use App\Models\Bilan\Bilan;
@@ -138,12 +138,12 @@ class BilanController extends Controller
         $bilan = $bilan->with(['actifs', 'passifs'])->whereId($bilan->id)->first();
 
         // Récupère les formules liées aux ratios
-        $formules = Formula::whereType("r")->get()->groupBy("ratio_id");
+        $formules = Formule::whereType("r")->get()->groupBy("ratio_id");
 
         // Retourne la vue pour afficher un bilan spécifique
         return view('bilan.show', [
             'bilan' => $bilan,
-            'formulasGroup' => $formules
+            'formulesGroup' => $formules
         ]);
     }
 

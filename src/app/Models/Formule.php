@@ -20,14 +20,14 @@ class Formule extends Model
     ];
 
     /**
-     * Gère les opérations définies dans le champ 'operation'.
+     * Gestion des operations
      *
-     * @param bool $calc Indique si les opérations imbriquées doivent être calculées
+     * @param bool $calc
      * @return Collection|float
      */
     public function operations(?bool $calc = false)
     {
-        // Sépare les opérations par espace et supprime le dernier élément vide
+        // Sépare les opérations par espace
         $operations = explode(' ', trim($this->operation));
         array_pop($operations);
 
@@ -43,7 +43,7 @@ class Formule extends Model
 
                 $element = DB::table($tableName)->find($id);
 
-                if ($tableName === 'formulas' && $calc === true) {
+                if ($tableName === 'formules' && $calc === true) {
                     $operations2 = explode(' ', trim($element->operation));
                     foreach ($operations2 as $operation) {
                         if ($operation === 'minus' || $operation === 'plus') {
@@ -59,6 +59,7 @@ class Formule extends Model
                         }
                     }
                 } else {
+                    if ($element === null) dd($tableName, $operation);
                     $element->relation = $tableName;
                     $results->push($element);
                 }

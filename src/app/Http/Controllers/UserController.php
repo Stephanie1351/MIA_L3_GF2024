@@ -25,7 +25,7 @@ class UserController extends Controller
     }
 
     /**
-     * Formulaire d'ajout de nouveau utilisateur
+     * Formuleire d'ajout de nouveau utilisateur
      *
      * @return View
      */

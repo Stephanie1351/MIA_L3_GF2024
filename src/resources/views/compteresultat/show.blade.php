@@ -34,9 +34,9 @@
             @foreach ($structures as $structure)
                 @php
                     // Somme (différence) pour chaque type de résultat
-                    $sum = $structure->formula->sum($compteResultat)
+                    $sum = $structure->formule->sum($compteResultat)
                 @endphp
-                @foreach ($structure->formula->operations() as $operation)
+                @foreach ($structure->formule->operations() as $operation)
                     @if(gettype($operation) === 'object')
                         <tr>
                             <td>{{ $operation->libelle }}</td>
@@ -45,7 +45,7 @@
                     @endif
                 @endforeach
                 <tr>
-                    <td class="fw-bold">{{ $structure->formula->libelle }}</td>
+                    <td class="fw-bold">{{ $structure->formule->libelle }}</td>
                     <td class="fw-bold text-end">{{ money($sum) }}</td>
                 </tr>
                 @php

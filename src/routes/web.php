@@ -91,7 +91,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['admin'])->group(function() {
         // Gestion des formules
-        Route::get('/formules/compte-resultat', [FormuleController::class, 'compteResultat'])->name('formulas.compte-resultat');
+        Route::get('/formules/compte-resultat', [FormuleController::class, 'compteResultat'])->name('formules.compte-resultat');
         Route::get('/formules/ratios', [FormuleController::class, 'ratios'])->name('formules.ratios');
     });
 

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string("operation");
             $table->string("type");
             $table->foreignId('ratio_id')->nullable()->references('id')->on('ratios');
-            $table->timestamps();
         });
     }
 
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formulas');
+        Schema::dropIfExists('formules');
     }
 };

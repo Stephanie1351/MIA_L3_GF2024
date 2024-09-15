@@ -17,7 +17,6 @@ return new class extends Migration
             $table->decimal('montant', total: 10, places: 2)->unsigned();
 
             $table->primary(['compte_resultat_id', 'produit_id']);
-            $table->timestamps();
         });
     }
 

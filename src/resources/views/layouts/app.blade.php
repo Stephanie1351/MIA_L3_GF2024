@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
     <link id="theme-style" rel="stylesheet" href="{{ asset('css/sb-admin-2.min.css') }}">
 
+    @vite(['resources/css/app.css'])
     @livewireStyles
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body id="page-top">
@@ -51,7 +51,7 @@
                     <div id="formules" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item" href="{{ route('formules.ratios') }}">Ratios</a>
-                            <a class="collapse-item" href="{{ route('formulas.compte-resultat') }}">Comptes de résultats</a>
+                            <a class="collapse-item" href="{{ route('formules.compte-resultat') }}">Comptes de résultats</a>
                         </div>
                     </div>
                 </li>

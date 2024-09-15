@@ -123,13 +123,13 @@ class Ratios extends Component
      */
     public function mount()
     {
-        $this->produits = Produit::all();
-        $this->charges = Charge::all();
         $this->actifs = Actif::all();
+        $this->ratios = Ratio::all();
+        $this->charges = Charge::all();
         $this->passifs = Passif::all();
+        $this->produits = Produit::all();
         $this->formules = Formule::where("type", "r")->get();
 
-        // Création du tableau de données pour les formules de ratio
         $this->datas = [
             'produits' => $this->produits,
             'charges' => $this->charges,
@@ -138,7 +138,6 @@ class Ratios extends Component
             'formules' => $this->formules
         ];
 
-        // Initialisation du libellé de la formule et de la liste des opérations
         $this->label = "";
         $this->operations[] = $this->defaultOperation;
     }
@@ -150,7 +149,6 @@ class Ratios extends Component
      */
     public function addOperation(): void
     {
-        // Ajout de l'opération par défaut à la propriété $operations
         $this->operations[] = $this->defaultOperation;
     }
 
@@ -162,7 +160,6 @@ class Ratios extends Component
      */
     public function removeOperation(int $key): void
     {
-        // Suppression de l'opération à l'index spécifié de la propriété $operations
         Arr::forget($this->operations, $key);
     }
 
@@ -174,13 +171,11 @@ class Ratios extends Component
     public function saveFormule(): void
     {
         $formule = "";
-        // Construction de la chaîne de caractères représentant la formule
         foreach ($this->operations as $operation)
         {
             $formule .= $operation['type'] . "." . $operation['field_id'] . " " . $operation['action'] . " ";
         }
 
-        // Création ou mise à jour de la formule dans la base de données
         $data = [
             "libelle" => $this->label,
             "operation" => $formule,
@@ -191,12 +186,10 @@ class Ratios extends Component
         if ($this->formule) $this->formule->update($data);
         else Formule::create($data);
 
-        // Réinitialisation du libellé de la formule, de la liste des opérations et de la catégorie de ratio
         $this->operations = [$this->defaultOperation];
         $this->label = "";
         $this->category = 0;
 
-        // Affichage d'un message de succès
         session()->flash('success', 'Enregistré avec succès');
     }
 
@@ -208,14 +201,12 @@ class Ratios extends Component
      */
     public function editFormule(int $formuleId): void
     {
-        // Récupération de la formule à éditer dans la base de données
         $this->formule = Formule::findOrFail($formuleId);
         $this->category = $this->formule->ratio_id ?? 0;
         $this->operations = [];
         $this->label = $this->formule->libelle;
         $operations = $this->formule->operations();
 
-        // Construction de la liste des opérations à partir de la chaîne de caractères représentant la formule
         foreach ($operations as $key => $operation)
         {
             if (gettype($operation) === 'object') $this->operations[] = [
@@ -233,7 +224,6 @@ class Ratios extends Component
      */
     public function cancelEditFormule(): void
     {
-        // Réinitialisation de la Formule de ratio, de la catégorie de ratio, de la liste des opérations et du libellé de la formule
         $this->formule = null;
         $this->category = 0;
         $this->operations = [$this->defaultOperation];
@@ -263,15 +253,12 @@ class Ratios extends Component
     {
         $data = ['libelle' => $this->ratio ];
 
-        // Création ou mise à jour du ratio dans la base de données
         if ($this->ratioModel === null) Ratio::create($data);
         else $this->ratioModel->update($data);
 
-        // Réinitialisation du libellé du ratio et du ratio en cours d'édition
         $this->ratio = null;
         $this->ratioModel = null;
 
-        // Affichage d'un message de succès
         session()->flash('success', 'Enregistré avec succès');
     }
 
@@ -283,7 +270,6 @@ class Ratios extends Component
      */
     public function editCategory(int $editId): void
     {
-        // Récupération du ratio à éditer dans la base de données
         $this->ratioModel = Ratio::findOrFail($editId);
         $this->ratio = $this->ratioModel->libelle;
     }
@@ -295,7 +281,6 @@ class Ratios extends Component
      */
     public function cancelEditCategory(): void
     {
-        // Réinitialisation du ratio en cours d'édition et du libellé du ratio
         $this->ratioModel = null;
         $this->ratio = null;
     }
@@ -307,13 +292,6 @@ class Ratios extends Component
      */
     public function render(): View
     {
-        // Récupération de toutes les formules et ratios dans la base de données
-        $this->formules = Formule::where("type", "r")->get();
-        $this->ratios = Ratio::all();
-
-        return view('livewire.ratios', [
-            'formules' => $this->formules,
-            'ratios' => $this->ratios
-        ]);
+        return view('livewire.ratios');
     }
 }

@@ -1,7 +1,7 @@
 # **Gestion Financière - Application Web**
 
 ## **Description**
-Cette application web de gestion financière est conçue pour les entreprises afin de faciliter la saisie des états financiers et le diagnostic financier. Développée avec **Laravel** (un framework PHP), elle permet aux utilisateurs de gérer les comptes annuels, d'effectuer des analyses financières approfondies, de simuler des performances futures, et de produire des rapports financiers. L'application offre une interface intuitive et des fonctionnalités robustes pour une gestion efficace des données financières.
+Cette application web de gestion financière est conçue pour faciliter la saisie des états financiers et le diagnostic financier. Développée avec **Laravel**, permet de gérer les comptes annuels, d'effectuer des analyses financières, et de produire des rapports financiers.
 
 ### **Architecture de Dossier**
 
@@ -15,9 +15,9 @@ Le projet est organisé de la manière suivante :
 
 ### **Auteurs**
 
-Ce projet est dévéloppé par deux développeurs :
-- `RAZAFIMANANA Geraldo`: raharimananageraldo@gmail.com
-- `RAFANOMEZANJANAHARY Larissia Louisette`: rafanomezanjanahary7@gmail.com
+Ce projet est dévéloppé par deux personnes :
+- `BOTOTALA Anniella Stephanie`: anniella3355@gmail.com
+- `RAJAONARISOA Jeannique Ronaldine`: rajaonarisoajeannique@gmail.com
 
 ## **Fonctionnalités**
 
@@ -27,9 +27,8 @@ Ce projet est dévéloppé par deux développeurs :
 - **Gestion des Utilisateurs** : Création, modification, et suppression des utilisateurs avec possibilité de définir leur rôle et leurs informations.
 
 ### **Gestion des États Financiers**
-- **Saisie des États Financiers** : Interface pour entrer les données financières périodiques telles que les bilans, les comptes de résultat, et les flux de trésorerie.
-- **Importation de Comptes Annuels** : Fonctionnalité pour importer les données des comptes annuels depuis des fichiers Excel ou CSV.
-- **Gestion des Actifs et Passifs** : Enregistrement et gestion des actifs (courants et non courants) et passifs (courants et non courants) avec possibilité de modification et suppression.
+- **Saisie des États Financiers** : Interface pour entrer les données financières périodiques (bilan, compte de résultat).
+- **Gestion des Actifs et Passifs** : Enregistrement et gestion des actifs (courants et non courants) et passifs (courants et non courants).
 
 ### **Analyse Financière**
 - **Calcul des Ratios Financiers** : Calcul automatique des ratios financiers clés tels que :
@@ -45,13 +44,12 @@ Avant de commencer l'installation de l'application web de gestion financière, a
 
 ### **PHP**
 - **Version requise** : PHP >= 8.1
-- **Installation** : Assurez-vous que PHP est correctement installé sur votre machine. Vous pouvez vérifier la version installée en utilisant la commande :
   ```bash
   php -v
   ```
 
-#### **Activation des extensions nécessaires**
-- Pour activer les extensions nécessaires, décommentez les lignes suivantes dans `php.ini`
+#### **Extensions nécessaires**
+- Activer les extensions dans le fichier `php.ini`
   ```ini
   extension=bcmath
   extension=ctype
@@ -67,33 +65,29 @@ Avant de commencer l'installation de l'application web de gestion financière, a
   ```
 
 ### **Git**
-- **Version requise** : **Git** (système de contrôle de version)
-- **Installation** : Assurez-vous d'avoir Git installé sur votre machine pour gérer les versions de votre projet. Vous pouvez télécharger et installer Git en suivant les instructions sur [git-scm.com](https://git-scm.com/downloads). Vérifiez l'installation avec la commande suivante :
+- **Version requise** : Git >= 2.X
   ```bash
   git --version
   ```
 
 ### **Composer**
-- **Version requise** : Composer (gestionnaire de dépendances PHP)
-- **Installation** : Composer doit être installé pour gérer les dépendances PHP. Vous pouvez installer Composer en suivant les instructions sur [getcomposer.org](https://getcomposer.org/download/). Vérifiez l'installation avec :
+- **Version requise** : Composer >= 2.X
   ```bash
   composer --version
   ```
 
 ### **Laravel**
-- **Version requise** : Laravel >= 10.x
-- **Installation** : Laravel sera installé via Composer. Vous n'avez pas besoin de l'installer séparément si vous suivez les instructions d'installation du projet.
+- **Version requise** : Laravel >= 10.X
 
 ### **Base de données**
 - **Type requis** : SQLite
-- **Installation** : SQLite est une base de données légère qui ne nécessite pas de serveur de base de données dédié. Assurez-vous que l'extension SQLite est activée dans votre configuration PHP. Vous pouvez vérifier la présence de SQLite avec :
+
   ```bash
   php -i | grep sqlite
   ```
 
 ### **Laravel Livewire**
 - **Version requise** : Laravel Livewire >= 3.x
-- **Installation** : Laravel Livewire sera installé via Composer. Vous n'avez pas besoin de l'installer séparément si vous suivez les instructions d'installation du projet.
 
 ## **Installation**
 
@@ -102,9 +96,9 @@ Suivez ces étapes pour installer et configurer l'application web de gestion fin
 1. **Cloner le dépôt**
    - Clonez le dépôt Git contenant le code source de l'application. A noter que le code source de l'application se trouve dans le dossier `src`.
    ```bash
-   git clone https://github.com/geraldo-razafimanana/MIA_L3_GF2024.git
+   git clone https://github.com/Stephanie1351/MIA_L3_GF2024.git
    cd MIA_L3_GF2024/src
-   git clone https://github.com/geraldo-razafimanana/MIA_L3_GF2024.git
+   git clone https://github.com/Stephanie1351/MIA_L3_GF2024.git
    cd MIA_L3_GF2024/src
    ```
 
@@ -149,14 +143,11 @@ Suivez ces étapes pour installer et configurer l'application web de gestion fin
    php artisan serve
    ```
 
-   Vous pouvez modifier le port ou l'adresse en ajoutant les options `--port` ou `--host` si nécessaire.
-
 ## **Utilisation**
 
 - **Administrateur** :
-  - Pour l'accès: raharimananageraldo@gmail.com / Test.2024
-  - Accédez au tableau de bord pour gérer les utilisateurs, surveiller les activités et configurer l'application.
-  - Ajouter des formules et les structures des tableaux
+  - Accès: anniella3355@gmail.com / default
+  - Gestion des utilisateurs, gestion des opérations, Gestion des forules.
 - **Gestionnaire** :
-  - Pour l'accès: rafanomezanjanahary7@gmail.com / Default
-  - Saisissez les états financiers, effectuez des analyses et voir les résultats.
+  - Accès: rajaonarisoajeannique@gmail.com / default
+  - Saisi des états financiers, analyse des résultats

@@ -24,8 +24,8 @@
                         <td>{{ $formule->getCategory() ?? "-" }}</td>
                         <td>{{ $formule->operationsAsString() }}</td>
                         <td>
-                            <button type="button" wire:click='editFormula({{ $formule->id }})' class="btn btn-info text-white"><i class="fa fa-edit"></i></button>
-                            <button type="button" wire:click='removeFormula({{ $formule->id }})' class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
+                            <button type="button" wire:click='editFormule({{ $formule->id }})' class="btn btn-info text-white"><i class="fa fa-edit"></i></button>
+                            <button type="button" wire:click='removeFormule({{ $formule->id }})' class="btn btn-danger text-white"><i class="fa fa-trash"></i></button>
                         </td>
                     </tr>
                 @empty
@@ -89,7 +89,7 @@
     </div>
 
     <div class="shadow shadow-md rounded bg-white p-4 mb-4">
-        <form wire:submit.prevent='saveFormula' method="post">
+        <form wire:submit.prevent='saveFormule' method="post">
             <div class="row mb-3">
                 <div class="col-6">
                     <div class="form-group">
@@ -129,11 +129,10 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control"
-                                    wire:model.live='operations.{{ $key }}.field_id'>
+                                <select class="form-control" wire:model.live='operations.{{ $key }}.field_id'>
                                     <option value="0">Selectionner</option>
                                     @foreach ($datas[$operation['type']] as $data)
-                                        <option value="{{ $data->id }}">{{ $data->libelle }}</option>
+                                        <option @selected($data->id === $operation['field_id']) value="{{ $data->id }}">{{ $data->libelle }}</option>
                                     @endforeach
                                 </select>
                             </td>
@@ -167,7 +166,7 @@
                 Enregistrer
             </button>
             @if ($formule !== null)
-                <button wire:click='cancelEditFormula' type="button" class="btn btn-danger text-white">
+                <button wire:click='canceleditFormule' type="button" class="btn btn-danger text-white">
                     <i class="fa fa-close"></i>
                     Annuler
                 </button>

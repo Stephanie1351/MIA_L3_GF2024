@@ -127,10 +127,8 @@ class CompteResultatController extends Controller
      */
     public function show(CompteResultat $compteResultat): View
     {
-        // Récupère toutes les structures avec leurs formules associées.
-        $structures = Structure::with(['formula'])->get();
+        $structures = Structure::with(['formule'])->get();
 
-        // Retourne la vue des détails du compte de résultat avec les structures.
         return view('compteresultat.show', [
             'compteResultat' => $compteResultat,
             'structures' => $structures
@@ -145,11 +143,9 @@ class CompteResultatController extends Controller
      */
     public function edit(CompteResultat $compteResultat): View
     {
-        // Récupère tous les produits et charges pour les afficher dans le formulaire.
         $produits = Produit::all();
         $charges = Charge::all();
 
-        // Retourne la vue du formulaire de modification avec les produits et charges.
         return view('compteresultat.edit', [
             'compteResultat' => $compteResultat,
             'produits' => $produits,

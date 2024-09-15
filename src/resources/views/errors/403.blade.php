@@ -3,8 +3,7 @@
 @section('title', '403 - Accès Refusé')
 
 @section('content')
-    <h1 class="page-title mb-4">403<br><span class="font-weight-light">Accès Refusé</span></h1>
-    <div class="mb-4">
-        Vous n'avez pas le droit d'acceder à cette page.
-    </div>
+    <div class="error mx-auto" data-text="404">403</div>
+    <p class="lead text-gray-800 mb-5">Accès refusé</p>
+    <p class="text-gray-500 mb-0">Vous ne disposez pas d'accès pour cette page</p>
 @endsection

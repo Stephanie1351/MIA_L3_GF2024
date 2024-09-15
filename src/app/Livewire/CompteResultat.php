@@ -53,7 +53,7 @@ class CompteResultat extends Component
      *
      * @var string
      */
-    public string $label;
+    public string $label = "";
 
     /**
      * Liste des opérations dans une formule de compte de résultat
@@ -75,7 +75,7 @@ class CompteResultat extends Component
      * @var array
      */
     public array $defaultResult = [
-        'type' => 'formulas',
+        'type' => 'formules',
         'field_id' => 0
     ];
 
@@ -97,18 +97,15 @@ class CompteResultat extends Component
      */
     public function mount()
     {
-        // Récupération des produits et des charges de type "Compte de Résultat"
-        $this->produits = Produit::whereType("cr")->get();
-        $this->charges = Charge::whereType("cr")->get();
-
-        // Récupération de toutes les structures de compte de résultat
+        $this->charges = Charge::all();
+        $this->produits = Produit::all();
         $this->structures = Structure::all();
+        $this->formules = Formule::whereType("cr")->get();
 
-        // Si des structures existent, on les ajoute à la propriété $results
         if ($this->structures->count() > 0) $this->results = $this->structures->map(function (Structure $structure) {
             return [
                 'field_id' => $structure->formule_id,
-                'type' => 'formulas'
+                'type' => 'formules'
             ];
         })->toArray();
 
@@ -116,7 +113,6 @@ class CompteResultat extends Component
         else $this->results[] = $this->defaultResult;
 
         // Initialisation du libellé de la formule et de la liste des opérations
-        $this->label = "";
         $this->operations[] = $this->defaultOperation;
     }
 
@@ -217,6 +213,7 @@ class CompteResultat extends Component
         session()->flash('success', 'Enregistré avec succès');
     }
 
+
     /**
      * Éditer une formule de compte de résultat
      *
@@ -225,13 +222,11 @@ class CompteResultat extends Component
      */
     public function editFormule(int $formuleId): void
     {
-        // Récupération de la formule à éditer dans la base de données
         $this->formule = Formule::findOrFail($formuleId);
         $this->operations = [];
         $this->label = $this->formule->libelle;
         $operations = $this->formule->operations();
 
-        // Construction de la liste des opérations à partir de la chaîne de caractères représentant la formule
         foreach ($operations as $key => $operation)
         {
             if (gettype($operation) === 'object') {
@@ -251,10 +246,6 @@ class CompteResultat extends Component
      */
     public function render(): View
     {
-        $this->formules = Formule::whereType("cr")->get();
-
-        return view('livewire.compte-resultat', [
-            'formulas' => $this->formules
-        ]);
+        return view('livewire.compte-resultat');
     }
 }

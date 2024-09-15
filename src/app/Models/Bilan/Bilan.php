@@ -2,7 +2,7 @@
 
 namespace App\Models\Bilan;
 
-use App\Models\Formula;
+use App\Models\Formule;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -101,10 +101,10 @@ class Bilan extends Model
      * @param int|null $id Identifiant de la formule
      * @return float La valeur calculée par la formule, ou 0 si la formule n'existe pas
      */
-    public function formulas(?int $id = null): float
+    public function formules(?int $id = null): float
     {
         // Trouver la formule par identifiant
-        $formule = Formula::find($id);
+        $formule = Formule::find($id);
 
         // Calculer la somme selon la formule, ou retourner 0 si la formule n'existe pas
         return $formule ? $formule->sum($this) : 0;
